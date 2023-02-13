@@ -16,6 +16,15 @@ export default {
     ]
   },
 
+  router: {
+    middleware: ['auth']
+  },
+
+  server: {
+    host: process.env.APP_HOST,
+    port: process.env.APP_PORT || 5000
+  },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '@/assets/css/main.css'
@@ -23,6 +32,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '@/plugins/vee-validate.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -41,9 +51,43 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/auth-next',
     // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    'nuxt-socket-io'
   ],
+
+  auth: {
+    strategies: {
+      local: { 
+        user: {
+          autoFetch: false
+        },
+        endpoints: {
+          login: {
+            url: '/api/v3/auth/login-email-candidate',
+            method: 'post',
+            propertyName: 'token'
+          },
+          user: false
+        }
+      }
+    },
+    redirect: {
+      login: '/login',
+      logout: '/login',
+      home: '/',
+      callback: '/login'
+    }
+  },
+
+  io: {
+    // module options
+    sockets: [{
+      name: 'main',
+      url: 'http://localhost:8020'
+    }]
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {

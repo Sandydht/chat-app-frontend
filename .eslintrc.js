@@ -15,5 +15,13 @@ module.exports = {
   plugins: [
   ],
   // add your custom rules here
-  rules: {}
+  rules: {
+    'no-trailing-spaces': 0,
+    'quotes': 0,
+    'quote-props': 0,
+    'vue/html-self-closing': 0,
+    'vue/singleline-html-element-content-newline': 0,
+    'space-before-function-paren': 0,
+    'vue/multiline-html-element-content-newline': 0
+  }
 }
