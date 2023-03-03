@@ -6,6 +6,14 @@
     <ValidationObserver v-slot="{ invalid, handleSubmit }" class="w-full">
       <form class="w-full h-full mt-4" @submit.prevent="handleSubmit(onSubmitLogin)">
         <div class="w-full">
+          <label for="username" class="text-[12px] leading-[18px] text-[#000000] font-[700]">Username</label>
+          <input 
+            id="username" 
+            type="text" 
+            class="mt-1 w-full h-full min-h-[48px] max-h-[48px] border-[1px] border-[#000000] rounded-[10px] flex items-center justify-start px-4 py-2 text-[12px] leading-[18px] text-[#000000] font-[400]"
+          />
+        </div>
+        <div class="w-full mt-2">
           <label for="phoneNumber" class="text-[12px] leading-[18px] text-[#000000] font-[700]">Phone Number</label>
           <input 
             id="phoneNumber" 
@@ -31,19 +39,19 @@
             type="submit"
             class="w-full h-full min-h-[48px] max-h-[48px] rounded-[10px] flex items-center justify-center px-4 py-2 bg-[#3C6255] text-center text-[12px] leading-[18px] font-[700] text-[#EAE7B1]"
             :disabled="invalid"
-          >Masuk</button>
+          >Registrasi</button>
         </div>
       </form>
     </ValidationObserver>
-    <div class="mt-[10px] w-full flex flex-row items-end justify-end">
-      <nuxt-link to="/registrasi" class="text-[12px] leading-[18px] font-normal text-[#000000]">Registrasi akun</nuxt-link>
+    <div class="mt-[10px] w-full flex flex-row items-start justify-start">
+      <p class="text-[12px] leading-[18px] font-normal text-[#000000]">Sudah punya akun ? <nuxt-link to="/login" class="font-bold">Masuk di sini</nuxt-link></p>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'LoginPage',
+  name: 'RegistrasiPage',
   auth: false,
   data() {
     return {

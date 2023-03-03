@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full bg-[#3C6255] p-4">
+  <div class="w-full h-full bg-[#3C6255] p-4 flex flex-row items-center justify-start gap-4">
     <p class="text-[16px] font-[700] leading-[24px] text-[#EAE7B1]">Chat App</p>
   </div>
 </template>

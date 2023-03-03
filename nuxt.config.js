@@ -44,6 +44,7 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    // https://github.com/postcss/postcss/wiki/PostCSS-8-for-end-users
     '@nuxt/postcss8'
   ],
 
@@ -51,9 +52,11 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    // https://auth.nuxtjs.org/guide/setup
     '@nuxtjs/auth-next',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    // https://nuxt-socket-io.netlify.app/
     'nuxt-socket-io'
   ],
 
@@ -65,7 +68,7 @@ export default {
         },
         endpoints: {
           login: {
-            url: '/api/v3/auth/login-email-candidate',
+            url: `${process.env.BASE_URL}/auth/login`,
             method: 'post',
             propertyName: 'token'
           },
@@ -74,10 +77,10 @@ export default {
       }
     },
     redirect: {
-      login: '/login',
+      login: '/registrasi',
       logout: '/login',
       home: '/',
-      callback: '/login'
+      callback: '/registrasi'
     }
   },
 
