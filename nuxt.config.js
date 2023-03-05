@@ -65,8 +65,7 @@ export default {
       local: { 
         token: {
           property: 'token',
-          required: true,
-          global: false,
+          global: true,
           maxAge: 36000000
         },
         user: {
@@ -74,9 +73,9 @@ export default {
           property: 'result'
         },
         endpoints: {
-          login: { url: `${process.env.BASE_URL}/auth/login`, method: 'post' },
-          logout: { url: `${process.env.BASE_URL}/auth/logout`, method: 'post' },
-          user: { url: `${process.env.BASE_URL}/auth/user`, method: 'get' },
+          login: { url: `${process.env.API_URL}/auth/login`, method: 'post' },
+          logout: { url: `${process.env.API_URL}/auth/logout`, method: 'post' },
+          user: { url: `${process.env.API_URL}/auth/user`, method: 'get' },
         }
       }
     },
@@ -99,7 +98,7 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: process.env.BASE_URL
+    baseURL: process.env.API_URL
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
