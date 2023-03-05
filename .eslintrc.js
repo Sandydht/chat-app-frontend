@@ -22,6 +22,10 @@ module.exports = {
     'vue/html-self-closing': 0,
     'vue/singleline-html-element-content-newline': 0,
     'space-before-function-paren': 0,
-    'vue/multiline-html-element-content-newline': 0
+    'vue/multiline-html-element-content-newline': 0,
+    'import/namespace': 0,
+    'no-new': 0,
+    'arrow-parens': 0,
+    'import/default': 0
   }
 }

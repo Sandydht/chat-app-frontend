@@ -22,7 +22,7 @@ export default {
 
   server: {
     host: process.env.APP_HOST,
-    port: process.env.APP_PORT || 5000
+    port: process.env.APP_PORT
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -64,23 +64,21 @@ export default {
     strategies: {
       local: { 
         user: {
-          autoFetch: false
+          autoFetch: false,
+          property: 'result'
         },
         endpoints: {
-          login: {
-            url: `${process.env.BASE_URL}/auth/login`,
-            method: 'post',
-            propertyName: 'token'
-          },
-          user: false
+          login: { url: `${process.env.BASE_URL}/auth/login`, method: 'post' },
+          logout: { url: `${process.env.BASE_URL}/auth/logout`, method: 'post' },
+          user: { url: `${process.env.BASE_URL}/auth/user`, method: 'get' },
         }
       }
     },
     redirect: {
-      login: '/registrasi',
-      logout: '/login',
+      login: '/login',
+      logout: '/',
       home: '/',
-      callback: '/registrasi'
+      callback: '/login'
     }
   },
 
@@ -95,7 +93,7 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/'
+    baseURL: process.env.BASE_URL
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
