@@ -63,6 +63,12 @@ export default {
   auth: {
     strategies: {
       local: { 
+        token: {
+          property: 'token',
+          required: true,
+          global: false,
+          maxAge: 36000000
+        },
         user: {
           autoFetch: false,
           property: 'result'
