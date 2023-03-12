@@ -6,7 +6,7 @@
       class="w-full h-full min-w-[24px] max-w-[24px] min-h-[24px] max-h-[24px]"
     />
     <input 
-      v-model="input"
+      v-model="inputSearch"
       type="search"
       :placeholder="placeholder"
       class="w-full h-full outline-none text-[12px] leading-[15px] font-normal text-[rgba(0,0,0,0.5)] py-4" 
@@ -22,16 +22,26 @@ export default {
       type: String,
       required: false,
       default: ''
+    },
+    value: {
+      type: String,
+      required: true,
+      default: ''
     }
   },
-  data() {
-    return {
-      input: ''
+  computed: {
+    inputSearch: {
+      get() {
+        return this.$props.value
+      },
+      set(val) {
+        this.$emit('input', val)
+      }
     }
   },
   methods: {
     onSubmit() {
-      this.$emit('on-submit', this.input)
+      this.$emit('on-submit')
     }
   }
 }

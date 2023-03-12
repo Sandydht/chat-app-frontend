@@ -42,17 +42,19 @@
           </div>
         </ValidationProvider>
         <div class="mt-4 w-full">
+          <ButtonLoader v-if="buttonLoading" />
           <button 
+            v-else
             type="submit"
             class="w-full h-full min-h-[48px] max-h-[48px] rounded-[10px] flex items-center justify-center px-4 py-2 text-center text-[12px] leading-[18px] font-[700]"
-            :class="[invalid ? 'bg-[#DDDDDD] text-white cursor-not-allowed' : 'bg-[#3C6255] text-[#EAE7B1] cursor-pointer']"
+            :class="[invalid ? 'bg-[#C4C4C4] text-white cursor-not-allowed' : 'bg-[#3C6255] text-[#EAE7B1] cursor-pointer']"
             :disabled="invalid"
           >Login</button>
         </div>
       </form>
     </ValidationObserver>
     <div class="mt-[10px] w-full flex flex-row items-end justify-end">
-      <nuxt-link to="/register" class="text-[12px] leading-[18px] font-normal text-[#000000]">Register account</nuxt-link>
+      <nuxt-link to="/register" class="text-[12px] leading-[18px] font-[700] text-[#000000] transition-all ease-linear hover:border-b-2 hover:border-[#000000]">Register account</nuxt-link>
     </div>
   </div>
 </template>
@@ -62,6 +64,9 @@ import { mapActions } from 'vuex'
 
 export default {
   name: 'LoginPage',
+  components: {
+    ButtonLoader: () => import('~/components/ButtonLoader')
+  },
   auth: false,
   data() {
     return {
@@ -69,7 +74,8 @@ export default {
         phone_number: '',
         password: ''
       },
-      passwordVisibility: false
+      passwordVisibility: false,
+      buttonLoading: false
     }
   },
   methods: {
@@ -78,6 +84,7 @@ export default {
     }),
     async onSubmitLogin() {
       try {
+        this.buttonLoading = true
         const response = await this.authenticationLogin(this.form)
         if (response && response.status === 'success' && response.result && response.token) {
           const user = response.result
@@ -91,6 +98,8 @@ export default {
         }
       } catch (error) {
         console.log('error: ', error)
+      } finally {
+        this.buttonLoading = false
       }
     },
     toggleVisibilityPassword() {

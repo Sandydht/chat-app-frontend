@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full min-w-[320px] max-w-[820px] min-h-[100vh] mx-auto">
+  <div class="w-full h-full max-w-[820px] min-h-[100vh] mx-auto">
     <AppBar class="sticky top-0 z-50" />
     <Nuxt />
   </div>

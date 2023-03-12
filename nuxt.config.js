@@ -80,7 +80,7 @@ export default {
       }
     },
     redirect: {
-      login: '/login',
+      login: '/register',
       logout: '/',
       home: '/',
       callback: '/login'

@@ -55,7 +55,9 @@
           </div>
         </ValidationProvider>
         <div class="mt-4 w-full">
+          <ButtonLoader v-if="buttonLoading" />
           <button
+            v-else
             type="submit"
             class="w-full h-full min-h-[48px] max-h-[48px] rounded-[10px] flex items-center justify-center px-4 py-2 text-center text-[12px] leading-[18px] font-[700]"
             :class="[invalid ? 'bg-[#DDDDDD] text-white cursor-not-allowed' : 'bg-[#3C6255] text-[#EAE7B1] cursor-pointer']"
@@ -65,7 +67,7 @@
       </form>
     </ValidationObserver>
     <div class="mt-[10px] w-full flex flex-row items-start justify-start">
-      <p class="text-[12px] leading-[18px] font-normal text-[#000000]">Already have an account ? <nuxt-link to="/login" class="font-bold">Login here</nuxt-link></p>
+      <p class="text-[12px] leading-[18px] font-normal text-[#000000]">Already have an account ? <nuxt-link to="/login" class="font-bold transition-all ease-linear hover:border-b-2 hover:border-[#000000]">Login here</nuxt-link></p>
     </div>
   </div>
 </template>
@@ -75,6 +77,9 @@ import { mapActions } from 'vuex'
 
 export default {
   name: 'RegisterPage',
+  components: {
+    ButtonLoader: () => import('~/components/ButtonLoader')
+  },
   auth: false,
   data() {
     return {
@@ -83,7 +88,8 @@ export default {
         phone_number: '',
         password: ''
       },
-      passwordVisibility: false
+      passwordVisibility: false,
+      buttonLoading: false
     }
   },
   methods: {
@@ -92,6 +98,7 @@ export default {
     }),
     async onSubmitRegister() {
       try {
+        this.buttonLoading = true
         const response = await this.authenticationRegister(this.form)
         if (response && response.status === 'success' && response.result && response.token) {
           const user = response.result
@@ -105,6 +112,8 @@ export default {
         }
       } catch (error) {
         console.log('error: ', error)
+      } finally {
+        this.buttonLoading = false
       }
     },
     toggleVisibilityPassword() {
