@@ -1,6 +1,6 @@
 <template>
   <div class="w-full h-full">
-    <div class="w-full h-auto sticky top-[62px] z-50 bg-white p-4">
+    <div class="w-full h-auto sticky top-[58px] z-50 bg-white p-4">
       <SearchBar 
         v-model="searchInput"
         placeholder="Search conversation..."

@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full bg-[#3C6255] p-4 flex flex-row items-center justify-start gap-4">
+  <div class="w-full h-full min-h-[58px] max-h-[58px] bg-[#3C6255] px-4 flex flex-row items-center justify-start gap-4">
     <button type="button" class="w-full h-full min-w-[30px] max-w-[30px] min-h-[30px] max-h-[30px] flex items-center justify-center overflow-hidden rounded-full transition-all ease-linear hover:bg-black hover:bg-opacity-50" @click="goBack">
       <img 
         src="~/assets/img/svg/arrow-back-green-24-outline.svg" 

@@ -1,9 +1,9 @@
 <template>
   <div class="w-full h-full min-h-[100vh]">
-    <div class="w-full h-auto sticky top-[62px] z-50 bg-white p-4">
+    <div class="w-full h-auto sticky top-[58px] z-50 bg-white p-4">
       <SearchBar 
-        placeholder="Search users..."
         v-model="inputSearch"
+        placeholder="Search users..."
         @on-submit="onSearchUsers" 
       />
     </div>

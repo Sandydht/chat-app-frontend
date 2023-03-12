@@ -1,5 +1,5 @@
 <template>
-  <button type="button" class="w-full p-4 rounded-[10px] border-[1px] border-[#000000] flex flex-row items-start justify-start gap-4 bg-[#FFFFFF] break-all overflow-hidden transition-all ease-linear hover:bg-gray-100" @click="goToChatRoom">
+  <button type="button" class="w-full p-4 rounded-[10px] border-[1px] border-[#000000] flex flex-row items-start justify-start gap-4 bg-[#FFFFFF] break-all overflow-hidden" @click="goToChatRoom">
     <div class="w-full h-full min-w-[50px] max-w-[50px] min-h-[50px] max-h-[50px] rounded-full border-[1px] border-[#000000]">
       <img 
         v-if="photoUrl" 
